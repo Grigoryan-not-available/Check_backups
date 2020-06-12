@@ -1,0 +1,162 @@
+$CurrentDate=Get-Date -Format "dd/MM/yyyy"
+$source = "\\192.168.0.86\backup_server\192.168.5.102\1c8_srvinfo\*.TIB"
+$destin = "\\192.168.0.86\backup\Çâ³ò ïî áåêàïàõ\Backup_status\$CurrentDate.txt"
+$host_pc = "[192.168.5.102]"
+$bool = 1
+
+"" >> $destin
+"`t`t`t`t`t`t`tShare" >> $destin
+"" >> $destin
+
+$host_pc >> $destin
+"" >> $destin
+
+##########################################1c8_srvinfo 192.168.5.102
+
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t 1c8_srvinfo `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	    break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  1c8_srvinfo`t" >> $destin}
+
+##########################################1CData 192.168.5.102
+
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.5.102\1CData\*.TIB"
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t 1CData `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	    break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  1CData`t" >> $destin}
+
+##########################################MSQQL_bak 192.168.5.102
+
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.5.102\MSQQL_bak\*.TIB"
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t MSQQL_bak `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	    break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  MSQQL_bak`t" >> $destin}
+
+##########################################sql 192.168.5.102
+
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.5.102\sql\*.TIB"
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t sql `t`t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	    break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  sql`t" >> $destin}
+
+##########################################system 192.168.5.102
+
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.5.102\system\*.TIB"
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t system `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  system`t" >> $destin}
+
+##########################################system 192.168.0.103
+
+$host_pc = "[192.168.5.103]"
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.0.103\system\*.TIB"
+"" >> $destin
+$host_pc >> $destin
+"" >> $destin
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t system `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  system`t" >> $destin}
+
+##########################################mssql_bak 192.168.0.200
+
+$host_pc = "[192.168.0.200]"
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.0.200\mssql_bak\*.TIB"
+"" >> $destin
+$host_pc >> $destin
+"" >> $destin
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.AddDays(-1).toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t mssql_bak `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  mssql_bak`t" >> $destin}
+
+##########################################Disk E 192.168.0.201
+
+$host_pc = "[192.168.0.201]"
+$bool = 1
+"" >> $destin
+$host_pc >> $destin
+"" >> $destin
+$source = "\\192.168.0.86\backup_server\192.168.0.201\Disk E\*.TIB"
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t Disk E `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  Disk E`t" >> $destin}
+
+##########################################Disk C 192.168.0.201
+
+$host_pc = "[192.168.0.201]"
+$bool = 1
+$source = "\\192.168.0.86\backup_server\192.168.0.201\Disk  C\*.TIB"
+foreach ($item in Get-ChildItem -Path $source)
+{
+    $date_creation = $item.CreationTime.toString("dd/MM/yyyy")
+    if($date_creation -eq $CurrentDate) {
+        "[+]`t Disk C `t | `t" + $item.CreationTime.toString("dd/MM/yyyy hh:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
+        $bool = 2
+	break
+    }
+}
+if($bool -eq 1) {"[-]`t" + $host_pc + "`t |  Disk C`t" >> $destin}
+
+"" >> $destin
+"" >> $destin
+"" >> $destin
