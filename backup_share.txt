@@ -113,7 +113,7 @@ $host_pc >> $destin
 "" >> $destin
 foreach ($item in Get-ChildItem -Path $source)
 {
-    $date_creation = $item.CreationTime.AddDays(-1).toString("dd/MM/yyyy")
+    $date_creation = $item.CreationTime.AddDays(+1).toString("dd/MM/yyyy")
     if($date_creation -eq $CurrentDate) {
         "[+]`t mssql_bak `t | `t" + $item.CreationTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($item.length/1MB) >> $destin
         $bool = 2
