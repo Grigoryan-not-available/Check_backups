@@ -1,6 +1,6 @@
 $CurrentDate=Get-Date -Format "dd/MM/yyyy"
 $source = "\\192.168.0.86\backup_server\192.168.5.102\1c8_srvinfo\*.TIB"
-$destin = "\\192.168.0.86\backup\Çâ³ò ïî áåêàïàõ\Backup_status\$CurrentDate.txt"
+$destin = "\\192.168.0.86\backup\Backup_status\$CurrentDate.txt"
 $host_pc = "[192.168.5.102]"
 $bool = 1
 
