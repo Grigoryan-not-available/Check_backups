@@ -8,7 +8,7 @@ $bool = 1
 $host_pc >> $destin
 "" >> $destin
 
-##########################################pf_Odesa 192.168.1.201:6699 (аж2) 
+##########################################pf_Odesa 192.168.1.201:6699 (RC2) 
 
 foreach ($item in Get-ChildItem -Path $source)
 {
@@ -21,7 +21,7 @@ foreach ($item in Get-ChildItem -Path $source)
 }
 if($bool -eq 1) {"[-]pf_Odesa`t" >> $destin}
 
-##########################################Acronis_backup 192.168.1.201:6699 (аж2)
+##########################################Acronis_backup 192.168.1.201:6699 (RC2)
 
 $bool = 1
 $source = "F:\Acronis_backup\*.TIB"
