@@ -1,5 +1,5 @@
 $CurrentDate=Get-Date -Format "dd/MM/yyyy"
-$source = "F:\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Backup\pf_Odesa\*.bak"
+$source = "F:\Acronis_backup\*.TIB"
 $destin = "\\192.168.0.86\backup\Backup_status\$CurrentDate.txt"
 $host_pc = "[192.168.1.201:6699 (RC2)]"
 
@@ -7,20 +7,8 @@ $host_pc = "[192.168.1.201:6699 (RC2)]"
 $host_pc >> $destin
 "" >> $destin
 
-##########################################pf_Odesa 192.168.1.201:6699 (аж2) 
-
-$file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
-$date_creation = $file.LastWriteTime.toString("dd/MM/yyyy")
-if($date_creation -eq $CurrentDate) {
-    "[+]pf_Odesa`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
-}
-else{
-    "[-]pf_Odesa`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
-}
-
 ##########################################Acronis_backup 192.168.1.201:6699 (аж2)
 
-$source = "F:\Acronis_backup\*.TIB"
 $file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
 $date_creation = $file.LastWriteTime.toString("dd/MM/yyyy")
 if($date_creation -eq $CurrentDate) {
@@ -28,6 +16,18 @@ if($date_creation -eq $CurrentDate) {
 }
 else{
     "[-]Acronis_backup`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
+}
+
+##########################################pf_Odesa 192.168.1.201:6699 (аж2) 
+
+$source = "F:\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Backup\pf_Odesa\*.bak"
+$file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
+$date_creation = $file.LastWriteTime.toString("dd/MM/yyyy")
+if($date_creation -eq $CurrentDate) {
+    "[+]pf_Odesa`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
+}
+else{
+    "[-]pf_Odesa`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
 }
 
 ##########################################cp_pf 192.168.1.201:6699 (RC2)
