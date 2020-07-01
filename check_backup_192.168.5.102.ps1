@@ -66,18 +66,6 @@ else{
     "[-]system`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
 }
 
-##########################################ar_cb 192.168.5.102
-
-$source = "E:\MSSQL_BAK\ARC\ar_cb*.rar"
-$file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
-$date_creation = $file.LastWriteTime.toString("dd/MM/yyyy")
-if($date_creation -eq $CurrentDate) {
-    "[+]ar_cb`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
-}
-else{
-    "[-]ar_cb`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
-}
-
 "" >> $destin
 "Folder MSSQL_BAK\ARC" >> $destin
 "" >> $destin
