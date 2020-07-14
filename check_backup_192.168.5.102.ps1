@@ -195,18 +195,6 @@ else{
     "[-]kicc `t`t| `t" + $file.LastWriteTime.ToString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
 }
 
-##########################################mariya 192.168.5.102
-
-$source = "E:\1C_82_Backup\mariya*.dt"
-$file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
-$date_creation = $file.LastWriteTime.ToString("dd/MM/yyyy")
-if($date_creation -eq $CurrentDate) {
-    "[+]mariya `t`t| `t" + $file.LastWriteTime.ToString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
-}
-else{
-    "[-]mariya `t`t| `t" + $file.LastWriteTime.ToString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
-}
-
 ##########################################ukr_bench 192.168.5.102
 
 $source = "E:\1C_82_Backup\ukr_bench*.dt"
