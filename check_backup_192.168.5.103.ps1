@@ -29,3 +29,15 @@ if($date_creation -eq $CurrentDate) {
 else{
     "[-]ar_i`t`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
 }
+
+##########################################ZVIT_ARC 192.168.0.86
+
+$source = "\\192.168.0.86\reserve_backup\medoc\*.ZBF"
+$file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
+$date_creation = $file.LastWriteTime.toString("dd/MM/yyyy")
+if($date_creation -eq $CurrentDate) {
+    "[+]ZVIT_ARC`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
+}
+else{
+    "[-]ZVIT_ARC`t`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
+}
