@@ -83,7 +83,7 @@ else{
 
 ##########################################b_studio 192.168.0.103
 
-$source = "M:\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Backup\magazin\*.BAK"
+$source = "M:\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Backup\b_studio\*.BAK"
 $file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
 $date_creation = $file.LastWriteTime.AddDays(+1).toString("dd/MM/yyyy")
 if($date_creation -eq $CurrentDate) {
