@@ -185,7 +185,7 @@ else{
 
 ##########################################kicc 192.168.5.102
 
-$source = "E:\1C_82_Backup\cartoil_group*.dt"
+$source = "E:\1C_82_Backup\kicc_*.dt"
 $file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
 $date_creation = $file.LastWriteTime.ToString("dd/MM/yyyy")
 if($date_creation -eq $CurrentDate) {
