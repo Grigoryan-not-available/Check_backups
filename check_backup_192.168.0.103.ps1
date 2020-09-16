@@ -1,6 +1,6 @@
 $CurrentDate=Get-Date -Format "dd/MM/yyyy"
-$source = "\\192.168.0.86\backup_server\192.168.0.103\system\*.TIB"
-$destin = "\\192.168.0.86\backup\Backup_status\$CurrentDate.txt"
+$source = "\\192.168.5.86\backup_server\192.168.0.103\system\*.TIB"
+$destin = "\\192.168.5.86\backup\Backup_status\$CurrentDate.txt"
 $host_pc = "[192.168.0.103]"
 
 "" >> $destin
@@ -25,7 +25,7 @@ else{
 
 $source = "M:\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Backup\ar_cb_yesterday\*.BAK"
 $file = Get-ChildItem -Path $source | Sort-Object LastWriteTime | Select-Object -Last 1
-$date_creation = $file.LastWriteTime.AddDays(+1).toString("dd/MM/yyyy")
+$date_creation = $file.LastWriteTime.toString("dd/MM/yyyy")
 if($date_creation -eq $CurrentDate) {
     "[+]ar_cb_yesterday`t| `t" + $file.LastWriteTime.toString("dd/MM/yyyy HH:mm:ss") + "`t | `t" + ($file.length/1MB) >> $destin
 }
